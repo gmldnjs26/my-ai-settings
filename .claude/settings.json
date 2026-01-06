@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__figma-mcp__get_design_context",
+      "mcp__figma-mcp__get_screenshot",
+      "mcp__figma-mcp__get_code",
+      "Bash(npm run lint:fix:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  // NEED: brew install terminal-notifier
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -title 'Claude Code' -message 'Waiting for input' -sound Ping"
+          }
+        ]
+      },
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -title 'Claude Code' -message 'Permission required' -sound Glass"
+          }
+        ]
+      }
+    ]
+  }
+}
